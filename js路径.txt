@@ -1,0 +1,13 @@
+菜鸟教程的路径：
+
+<script src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js"></script>
+<script src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+<script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+
+
+
+
+React 官网 路径：
+
+<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>

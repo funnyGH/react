@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="demo1"></div>
+<div id="demo2"></div>
+<div id="demo3"></div>
+<div id="demo4"></div>
+<div id="demo5"></div>
+<div id="demo6"></div>
+<div id="demo7"></div>
+<div id="demo8"></div>
+<div id="demo9"></div>
+
+
+<script src="js/react.min.js"></script>
+<script src="js/react-dom.js"></script>
+<script src="js/browser.min.js"></script>
+<script type="text/babel">
+    ///////////////////////////demo1
+    var Text = React.createClass({
+        render:function(){
+            return (
+                    <div className='a'>
+                    我是第一个demo
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+    <Text />,
+            document.getElementById('demo1')
+    );
+    ///////////////////////////demo2
+    var name = ['Jack','Bob','Tom'];
+    var Demo2 = React.createClass({
+        render:function(){
+            return (
+                <div>
+                    {
+                        name.map(function(name){
+                            return <div>hello,{name}!</div>
+                        })
+                    }
+                </div>
+            )
+        }
+    });
+    ReactDOM.render(
+        <Demo2 />,
+        document.getElementById('demo2')
+    );
+    ///////////////////////////demo3
+    var names = ['Jack','Bob','Tom'];
+    ReactDOM.render(
+        <div>
+            {
+                names.map(function(name){
+                    return <div>hello,{name}!</div>
+                })
+            }
+        </div>,
+        document.getElementById('demo3')
+    );
+    ///////////////////////////demo4
+    var arr = [
+            <h1>你好，我是张三</h1>,
+            <div>你好吗？</div>
+    ];
+    ReactDOM.render(
+            <div>*{arr}*</div>,
+            document.getElementById('demo4')
+    );
+    ///////////////////////////demo5
+    var Demo5 = React.createClass({
+        render:function(){
+            return <h3 className='h3'>HI,{this.props.name}!</h3>
+        }
+    })
+    ReactDOM.render(
+            <Demo5 name='java' />,
+            document.getElementById('demo5')
+    )
+
+    ///////////////////////////demo6
+    var FancyCheckbox = React.createClass({
+                render: function() {
+                    var fancyClass = this.props.checked ? 'FancyChecked' : 'FancyUnchecked';
+                    return (
+                            <div className={fancyClass} onClick={this.props.onClick}>
+                {this.props.children}
+            </div>
+    );
+    }
+    });
+    ReactDOM.render(
+        <FancyCheckbox checked={true} onClick={console.log.bind(console)}>
+        点我
+        </FancyCheckbox>,
+        document.getElementById('demo6')
+    );
+    ///////////////////////////demo7
+    var Demo7 = React.createClass({
+        getInitialState:function(){
+            return {enable:false};
+        },
+        handleClick:function(event){
+            this.setState({enable: !this.state.enable})
+        },
+        render: function () {
+            return(
+                <div>
+                    <input type="text" disabled={this.state.enable} />
+                    <button onClick={this.handleClick}>change state</button>
+                </div>
+            )
+        }
+    });
+    ReactDOM.render(
+            <Demo7 />,
+            document.getElementById('demo7')
+    );
+    ///////////////////////////demo8
+    var Hello = React.createClass({
+        getInitialState:function(){
+            return {
+                opacity:1.0
+            }
+        },
+        componentDidMount:function(){
+            this.timer = setInterval(function(){
+                var opacity = this.state.opacity;
+                opacity -= .1;
+                if (opacity < 0.1){
+                    opacity = 1.0
+                };
+                this.setState({
+                    opacity : opacity
+                });
+            }.bind(this),100)
+        },
+        render: function () {
+            return(
+                <div style={{opacity : this.state.opacity}}>
+                    Hello,{this.props.name}
+                </div>
+            )
+        }
+    });
+    ReactDOM.render(
+            <Hello name='world' />,
+            document.getElementById('demo8')
+    )
+    ///////////////////////////demo9
+    var Search = React.createClass({
+        render:function(){
+            return(
+                    <div>
+                    {this.props.searchType}:<input type='text' />
+                    <button>search</button>
+                    </div>
+            )
+        }
+    });
+    var Page = React.createClass({
+        render:function(){
+            return(
+                    <div>
+                        <h3>Welcome!</h3>
+                        <Search searchType='Title' />
+                        <Search searchType='Content' />
+                    </div>
+            )
+        }
+    });
+    ReactDOM.render(
+            <Page />,
+            document.getElementById('demo9')
+    )
+</script>
+
+
+</body>
+</html>

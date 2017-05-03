@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h2>demo1</h2>
+    <div id="demo1"></div>
+
+
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script type="text/babel">
+        var Text = React.createClass({
+            render:function(){
+                return (
+                    <div className='a'>
+                        我是第一个demo
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <Text />,
+            document.getElementById('demo1')
+        )
+    </script>
+
+
+</body>
+</html>
